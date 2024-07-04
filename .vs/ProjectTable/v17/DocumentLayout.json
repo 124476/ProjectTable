@@ -1,0 +1,107 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Stipo6\\source\\repos\\ProjectTable\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{193E42C0-C9B6-4D8E-9B71-1CD4C09A0507}|ProjectTable\\ProjectTable.csproj|c:\\users\\stipo6\\source\\repos\\projecttable\\projecttable\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{193E42C0-C9B6-4D8E-9B71-1CD4C09A0507}|ProjectTable\\ProjectTable.csproj|solutionrelative:projecttable\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{193E42C0-C9B6-4D8E-9B71-1CD4C09A0507}|ProjectTable\\ProjectTable.csproj|c:\\users\\stipo6\\source\\repos\\projecttable\\projecttable\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{193E42C0-C9B6-4D8E-9B71-1CD4C09A0507}|ProjectTable\\ProjectTable.csproj|solutionrelative:projecttable\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{193E42C0-C9B6-4D8E-9B71-1CD4C09A0507}|ProjectTable\\ProjectTable.csproj|c:\\users\\stipo6\\source\\repos\\projecttable\\projecttable\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{193E42C0-C9B6-4D8E-9B71-1CD4C09A0507}|ProjectTable\\ProjectTable.csproj|solutionrelative:projecttable\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{193E42C0-C9B6-4D8E-9B71-1CD4C09A0507}|ProjectTable\\ProjectTable.csproj|c:\\users\\stipo6\\source\\repos\\projecttable\\projecttable\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{193E42C0-C9B6-4D8E-9B71-1CD4C09A0507}|ProjectTable\\ProjectTable.csproj|solutionrelative:projecttable\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{193E42C0-C9B6-4D8E-9B71-1CD4C09A0507}|ProjectTable\\ProjectTable.csproj|c:\\users\\stipo6\\source\\repos\\projecttable\\projecttable\\models\\database.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{193E42C0-C9B6-4D8E-9B71-1CD4C09A0507}|ProjectTable\\ProjectTable.csproj|solutionrelative:projecttable\\models\\database.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 405,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "packages.config",
+              "DocumentMoniker": "C:\\Users\\Stipo6\\source\\repos\\ProjectTable\\ProjectTable\\packages.config",
+              "RelativeDocumentMoniker": "ProjectTable\\packages.config",
+              "ToolTip": "C:\\Users\\Stipo6\\source\\repos\\ProjectTable\\ProjectTable\\packages.config",
+              "RelativeToolTip": "ProjectTable\\packages.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-07-04T12:59:29.916Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Stipo6\\source\\repos\\ProjectTable\\ProjectTable\\App.xaml.cs",
+              "RelativeDocumentMoniker": "ProjectTable\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\Stipo6\\source\\repos\\ProjectTable\\ProjectTable\\App.xaml.cs",
+              "RelativeToolTip": "ProjectTable\\App.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAABdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T11:57:25.407Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DataBase.edmx [Diagram1]",
+              "DocumentMoniker": "C:\\Users\\Stipo6\\source\\repos\\ProjectTable\\ProjectTable\\Models\\DataBase.edmx",
+              "RelativeDocumentMoniker": "ProjectTable\\Models\\DataBase.edmx",
+              "ToolTip": "C:\\Users\\Stipo6\\source\\repos\\ProjectTable\\ProjectTable\\Models\\DataBase.edmx [Diagram1]",
+              "RelativeToolTip": "ProjectTable\\Models\\DataBase.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2024-07-04T11:56:53.88Z",
+              "EditorCaption": " [Diagram1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Stipo6\\source\\repos\\ProjectTable\\ProjectTable\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "ProjectTable\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Stipo6\\source\\repos\\ProjectTable\\ProjectTable\\MainWindow.xaml",
+              "RelativeToolTip": "ProjectTable\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-07-04T11:56:03.135Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Stipo6\\source\\repos\\ProjectTable\\ProjectTable\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "ProjectTable\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Stipo6\\source\\repos\\ProjectTable\\ProjectTable\\MainWindow.xaml.cs",
+              "RelativeToolTip": "ProjectTable\\MainWindow.xaml.cs",
+              "ViewState": "AQIAAEcAAAAAAAAAAAAuwF8AAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T11:56:02.137Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

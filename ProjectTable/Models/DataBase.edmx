@@ -1,0 +1,829 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище ProgectOfficeDatabaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DocumentFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskId" Type="int" />
+          <Property Name="Photo" Type="image" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Employe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Guid" Type="nvarchar" MaxLength="150" />
+          <Property Name="PositionId" Type="int" />
+          <Property Name="First_name" Type="nvarchar" MaxLength="150" />
+          <Property Name="Last_name" Type="nvarchar" MaxLength="150" />
+          <Property Name="Middle_name" Type="nvarchar" MaxLength="150" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" />
+          <Property Name="Login" Type="nvarchar" MaxLength="150" />
+          <Property Name="Password" Type="nvarchar" MaxLength="150" />
+          <Property Name="Created_timestamp" Type="datetime" />
+          <Property Name="Deleted_timestap" Type="datetime" />
+          <Property Name="Last_enter_timestamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="LastStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="TaskId" Type="int" />
+        </EntityType>
+        <EntityType Name="Portfile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeId" Type="int" />
+          <Property Name="FullTitle" Type="nvarchar" MaxLength="200" />
+          <Property Name="ShortTitle" Type="nvarchar" MaxLength="150" />
+          <Property Name="CreatedTime" Type="datetime" />
+          <Property Name="DeletedTime" Type="datetime" />
+          <Property Name="StartScheduledTime" Type="datetime" />
+          <Property Name="FinishScheduledTime" Type="datetime" />
+          <Property Name="Description" Type="text" />
+          <Property Name="CreatorEmployeeId" Type="int" />
+          <Property Name="ResponsibleEmployeeId" Type="int" />
+          <Property Name="Icon" Type="image" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="int" />
+          <Property Name="ShortTitle" Type="nvarchar" MaxLength="150" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Descriprion" Type="nvarchar" MaxLength="250" />
+          <Property Name="PostanovchikId" Type="int" />
+          <Property Name="IspolnitelId" Type="int" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="CreatedTime" Type="datetime" />
+          <Property Name="UpdatedTime" Type="datetime" />
+          <Property Name="DelectedTime" Type="datetime" />
+          <Property Name="StartActualTime" Type="datetime" />
+          <Property Name="FinishActualTime" Type="datetime" />
+          <Property Name="PreviousTaskId" Type="int" />
+          <Property Name="DateStart" Type="datetime" />
+          <Property Name="DateEnd" Type="datetime" />
+          <Property Name="PortfileId" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="TaskStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="Color" Type="nvarchar" MaxLength="7" />
+        </EntityType>
+        <EntityType Name="Wather">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeId" Type="int" Nullable="false" />
+          <Property Name="TaskId" Type="int" />
+        </EntityType>
+        <Association Name="FK_DocumentFile_Task">
+          <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+          <End Role="DocumentFile" Type="Self.DocumentFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocumentFile">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employe_Position">
+          <End Role="Position" Type="Self.Position" Multiplicity="0..1" />
+          <End Role="Employe" Type="Self.Employe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employe">
+              <PropertyRef Name="PositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LastStatus_Task">
+          <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+          <End Role="LastStatus" Type="Self.LastStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LastStatus">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LastStatus_TaskStatus">
+          <End Role="TaskStatus" Type="Self.TaskStatus" Multiplicity="0..1" />
+          <End Role="LastStatus" Type="Self.LastStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaskStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LastStatus">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Employe">
+          <End Role="Employe" Type="Self.Employe" Multiplicity="0..1" />
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="ResponsibleEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Employe1">
+          <End Role="Employe" Type="Self.Employe" Multiplicity="0..1" />
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="CreatorEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Employe1">
+          <End Role="Employe" Type="Self.Employe" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IspolnitelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Portfile">
+          <End Role="Portfile" Type="Self.Portfile" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Portfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="PortfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Project">
+          <End Role="Project" Type="Self.Project" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_TaskStatus">
+          <End Role="TaskStatus" Type="Self.TaskStatus" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaskStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wather_Employe">
+          <End Role="Employe" Type="Self.Employe" Multiplicity="1" />
+          <End Role="Wather" Type="Self.Wather" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wather">
+              <PropertyRef Name="EmployeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wather_Task">
+          <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+          <End Role="Wather" Type="Self.Wather" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wather">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ProgectOfficeDatabaseModelContainer">
+          <EntitySet Name="DocumentFile" EntityType="Self.DocumentFile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employe" EntityType="Self.Employe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LastStatus" EntityType="Self.LastStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Portfile" EntityType="Self.Portfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaskStatus" EntityType="Self.TaskStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wather" EntityType="Self.Wather" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DocumentFile_Task" Association="Self.FK_DocumentFile_Task">
+            <End Role="Task" EntitySet="Task" />
+            <End Role="DocumentFile" EntitySet="DocumentFile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employe_Position" Association="Self.FK_Employe_Position">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="Employe" EntitySet="Employe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LastStatus_Task" Association="Self.FK_LastStatus_Task">
+            <End Role="Task" EntitySet="Task" />
+            <End Role="LastStatus" EntitySet="LastStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LastStatus_TaskStatus" Association="Self.FK_LastStatus_TaskStatus">
+            <End Role="TaskStatus" EntitySet="TaskStatus" />
+            <End Role="LastStatus" EntitySet="LastStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Employe" Association="Self.FK_Project_Employe">
+            <End Role="Employe" EntitySet="Employe" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Employe1" Association="Self.FK_Project_Employe1">
+            <End Role="Employe" EntitySet="Employe" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Employe1" Association="Self.FK_Task_Employe1">
+            <End Role="Employe" EntitySet="Employe" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Portfile" Association="Self.FK_Task_Portfile">
+            <End Role="Portfile" EntitySet="Portfile" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Project" Association="Self.FK_Task_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_TaskStatus" Association="Self.FK_Task_TaskStatus">
+            <End Role="TaskStatus" EntitySet="TaskStatus" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wather_Employe" Association="Self.FK_Wather_Employe">
+            <End Role="Employe" EntitySet="Employe" />
+            <End Role="Wather" EntitySet="Wather" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wather_Task" Association="Self.FK_Wather_Task">
+            <End Role="Task" EntitySet="Task" />
+            <End Role="Wather" EntitySet="Wather" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProgectOfficeDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DocumentFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskId" Type="Int32" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_DocumentFile_Task" FromRole="DocumentFile" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="Employe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Guid" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PositionId" Type="Int32" />
+          <Property Name="First_name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Last_name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Middle_name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Created_timestamp" Type="DateTime" Precision="3" />
+          <Property Name="Deleted_timestap" Type="DateTime" Precision="3" />
+          <Property Name="Last_enter_timestamp" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Position" Relationship="Self.FK_Employe_Position" FromRole="Employe" ToRole="Position" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_Project_Employe" FromRole="Employe" ToRole="Project" />
+          <NavigationProperty Name="Project1" Relationship="Self.FK_Project_Employe1" FromRole="Employe" ToRole="Project" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_Task_Employe1" FromRole="Employe" ToRole="Task" />
+          <NavigationProperty Name="Wather" Relationship="Self.FK_Wather_Employe" FromRole="Employe" ToRole="Wather" />
+        </EntityType>
+        <EntityType Name="LastStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="TaskId" Type="Int32" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_LastStatus_Task" FromRole="LastStatus" ToRole="Task" />
+          <NavigationProperty Name="TaskStatus" Relationship="Self.FK_LastStatus_TaskStatus" FromRole="LastStatus" ToRole="TaskStatus" />
+        </EntityType>
+        <EntityType Name="Portfile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_Task_Portfile" FromRole="Portfile" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employe" Relationship="Self.FK_Employe_Position" FromRole="Position" ToRole="Employe" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeId" Type="Int32" />
+          <Property Name="FullTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ShortTitle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+          <Property Name="DeletedTime" Type="DateTime" Precision="3" />
+          <Property Name="StartScheduledTime" Type="DateTime" Precision="3" />
+          <Property Name="FinishScheduledTime" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatorEmployeeId" Type="Int32" />
+          <Property Name="ResponsibleEmployeeId" Type="Int32" />
+          <Property Name="Icon" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Employe" Relationship="Self.FK_Project_Employe" FromRole="Project" ToRole="Employe" />
+          <NavigationProperty Name="Employe1" Relationship="Self.FK_Project_Employe1" FromRole="Project" ToRole="Employe" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_Task_Project" FromRole="Project" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int32" />
+          <Property Name="ShortTitle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Descriprion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PostanovchikId" Type="Int32" />
+          <Property Name="IspolnitelId" Type="Int32" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedTime" Type="DateTime" Precision="3" />
+          <Property Name="DelectedTime" Type="DateTime" Precision="3" />
+          <Property Name="StartActualTime" Type="DateTime" Precision="3" />
+          <Property Name="FinishActualTime" Type="DateTime" Precision="3" />
+          <Property Name="PreviousTaskId" Type="Int32" />
+          <Property Name="DateStart" Type="DateTime" Precision="3" />
+          <Property Name="DateEnd" Type="DateTime" Precision="3" />
+          <Property Name="PortfileId" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="DocumentFile" Relationship="Self.FK_DocumentFile_Task" FromRole="Task" ToRole="DocumentFile" />
+          <NavigationProperty Name="Employe" Relationship="Self.FK_Task_Employe1" FromRole="Task" ToRole="Employe" />
+          <NavigationProperty Name="LastStatus" Relationship="Self.FK_LastStatus_Task" FromRole="Task" ToRole="LastStatus" />
+          <NavigationProperty Name="Portfile" Relationship="Self.FK_Task_Portfile" FromRole="Task" ToRole="Portfile" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_Task_Project" FromRole="Task" ToRole="Project" />
+          <NavigationProperty Name="TaskStatus" Relationship="Self.FK_Task_TaskStatus" FromRole="Task" ToRole="TaskStatus" />
+          <NavigationProperty Name="Wather" Relationship="Self.FK_Wather_Task" FromRole="Task" ToRole="Wather" />
+        </EntityType>
+        <EntityType Name="TaskStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LastStatus" Relationship="Self.FK_LastStatus_TaskStatus" FromRole="TaskStatus" ToRole="LastStatus" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_Task_TaskStatus" FromRole="TaskStatus" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="Wather">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeId" Type="Int32" Nullable="false" />
+          <Property Name="TaskId" Type="Int32" />
+          <NavigationProperty Name="Employe" Relationship="Self.FK_Wather_Employe" FromRole="Wather" ToRole="Employe" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_Wather_Task" FromRole="Wather" ToRole="Task" />
+        </EntityType>
+        <Association Name="FK_DocumentFile_Task">
+          <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+          <End Role="DocumentFile" Type="Self.DocumentFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocumentFile">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employe_Position">
+          <End Role="Position" Type="Self.Position" Multiplicity="0..1" />
+          <End Role="Employe" Type="Self.Employe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employe">
+              <PropertyRef Name="PositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Employe">
+          <End Role="Employe" Type="Self.Employe" Multiplicity="0..1" />
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="ResponsibleEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Employe1">
+          <End Role="Employe" Type="Self.Employe" Multiplicity="0..1" />
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="CreatorEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Employe1">
+          <End Role="Employe" Type="Self.Employe" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IspolnitelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wather_Employe">
+          <End Role="Employe" Type="Self.Employe" Multiplicity="1" />
+          <End Role="Wather" Type="Self.Wather" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wather">
+              <PropertyRef Name="EmployeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LastStatus_Task">
+          <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+          <End Role="LastStatus" Type="Self.LastStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LastStatus">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LastStatus_TaskStatus">
+          <End Role="TaskStatus" Type="Self.TaskStatus" Multiplicity="0..1" />
+          <End Role="LastStatus" Type="Self.LastStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaskStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LastStatus">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Portfile">
+          <End Role="Portfile" Type="Self.Portfile" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Portfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="PortfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Project">
+          <End Role="Project" Type="Self.Project" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_TaskStatus">
+          <End Role="TaskStatus" Type="Self.TaskStatus" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaskStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wather_Task">
+          <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+          <End Role="Wather" Type="Self.Wather" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wather">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProgectOfficeDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DocumentFile" EntityType="Self.DocumentFile" />
+          <EntitySet Name="Employe" EntityType="Self.Employe" />
+          <EntitySet Name="LastStatus" EntityType="Self.LastStatus" />
+          <EntitySet Name="Portfile" EntityType="Self.Portfile" />
+          <EntitySet Name="Position" EntityType="Self.Position" />
+          <EntitySet Name="Project" EntityType="Self.Project" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Task" EntityType="Self.Task" />
+          <EntitySet Name="TaskStatus" EntityType="Self.TaskStatus" />
+          <EntitySet Name="Wather" EntityType="Self.Wather" />
+          <AssociationSet Name="FK_DocumentFile_Task" Association="Self.FK_DocumentFile_Task">
+            <End Role="Task" EntitySet="Task" />
+            <End Role="DocumentFile" EntitySet="DocumentFile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employe_Position" Association="Self.FK_Employe_Position">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="Employe" EntitySet="Employe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Employe" Association="Self.FK_Project_Employe">
+            <End Role="Employe" EntitySet="Employe" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Employe1" Association="Self.FK_Project_Employe1">
+            <End Role="Employe" EntitySet="Employe" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Employe1" Association="Self.FK_Task_Employe1">
+            <End Role="Employe" EntitySet="Employe" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wather_Employe" Association="Self.FK_Wather_Employe">
+            <End Role="Employe" EntitySet="Employe" />
+            <End Role="Wather" EntitySet="Wather" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LastStatus_Task" Association="Self.FK_LastStatus_Task">
+            <End Role="Task" EntitySet="Task" />
+            <End Role="LastStatus" EntitySet="LastStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LastStatus_TaskStatus" Association="Self.FK_LastStatus_TaskStatus">
+            <End Role="TaskStatus" EntitySet="TaskStatus" />
+            <End Role="LastStatus" EntitySet="LastStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Portfile" Association="Self.FK_Task_Portfile">
+            <End Role="Portfile" EntitySet="Portfile" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Project" Association="Self.FK_Task_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_TaskStatus" Association="Self.FK_Task_TaskStatus">
+            <End Role="TaskStatus" EntitySet="TaskStatus" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wather_Task" Association="Self.FK_Wather_Task">
+            <End Role="Task" EntitySet="Task" />
+            <End Role="Wather" EntitySet="Wather" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ProgectOfficeDatabaseModelContainer" CdmEntityContainer="ProgectOfficeDatabaseEntities">
+          <EntitySetMapping Name="DocumentFile">
+            <EntityTypeMapping TypeName="ProgectOfficeDatabaseModel.DocumentFile">
+              <MappingFragment StoreEntitySet="DocumentFile">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employe">
+            <EntityTypeMapping TypeName="ProgectOfficeDatabaseModel.Employe">
+              <MappingFragment StoreEntitySet="Employe">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+                <ScalarProperty Name="First_name" ColumnName="First_name" />
+                <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+                <ScalarProperty Name="Middle_name" ColumnName="Middle_name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Created_timestamp" ColumnName="Created_timestamp" />
+                <ScalarProperty Name="Deleted_timestap" ColumnName="Deleted_timestap" />
+                <ScalarProperty Name="Last_enter_timestamp" ColumnName="Last_enter_timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LastStatus">
+            <EntityTypeMapping TypeName="ProgectOfficeDatabaseModel.LastStatus">
+              <MappingFragment StoreEntitySet="LastStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Portfile">
+            <EntityTypeMapping TypeName="ProgectOfficeDatabaseModel.Portfile">
+              <MappingFragment StoreEntitySet="Portfile">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Position">
+            <EntityTypeMapping TypeName="ProgectOfficeDatabaseModel.Position">
+              <MappingFragment StoreEntitySet="Position">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Project">
+            <EntityTypeMapping TypeName="ProgectOfficeDatabaseModel.Project">
+              <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EmployeId" ColumnName="EmployeId" />
+                <ScalarProperty Name="FullTitle" ColumnName="FullTitle" />
+                <ScalarProperty Name="ShortTitle" ColumnName="ShortTitle" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="DeletedTime" ColumnName="DeletedTime" />
+                <ScalarProperty Name="StartScheduledTime" ColumnName="StartScheduledTime" />
+                <ScalarProperty Name="FinishScheduledTime" ColumnName="FinishScheduledTime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatorEmployeeId" ColumnName="CreatorEmployeeId" />
+                <ScalarProperty Name="ResponsibleEmployeeId" ColumnName="ResponsibleEmployeeId" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ProgectOfficeDatabaseModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Task">
+            <EntityTypeMapping TypeName="ProgectOfficeDatabaseModel.Task">
+              <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="ShortTitle" ColumnName="ShortTitle" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Descriprion" ColumnName="Descriprion" />
+                <ScalarProperty Name="PostanovchikId" ColumnName="PostanovchikId" />
+                <ScalarProperty Name="IspolnitelId" ColumnName="IspolnitelId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="UpdatedTime" ColumnName="UpdatedTime" />
+                <ScalarProperty Name="DelectedTime" ColumnName="DelectedTime" />
+                <ScalarProperty Name="StartActualTime" ColumnName="StartActualTime" />
+                <ScalarProperty Name="FinishActualTime" ColumnName="FinishActualTime" />
+                <ScalarProperty Name="PreviousTaskId" ColumnName="PreviousTaskId" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="PortfileId" ColumnName="PortfileId" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaskStatus">
+            <EntityTypeMapping TypeName="ProgectOfficeDatabaseModel.TaskStatus">
+              <MappingFragment StoreEntitySet="TaskStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wather">
+            <EntityTypeMapping TypeName="ProgectOfficeDatabaseModel.Wather">
+              <MappingFragment StoreEntitySet="Wather">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EmployeId" ColumnName="EmployeId" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
